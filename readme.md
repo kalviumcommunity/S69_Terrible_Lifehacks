@@ -5,4 +5,4 @@ Project Overview: The "List of Worst Life Hacks" is a web application that allow
 
 Key Features: User Authentication: Allow users to sign up, log in, and manage their accounts securely. Life Hack Submission: Users can submit their own “worst life hacks” along with a short description and category (e.g., kitchen, cleaning, technology). Voting System: Users can vote on submitted hacks, marking them as "hilariously bad" or "even worse." Comments Section: Users can comment on hacks and interact with other community members. Dynamic List Display: Display a list of life hacks that updates in real-time based on user voting and new submissions. Categories: Organize hacks into categories (e.g., cleaning hacks, food hacks, tech hacks, etc.). Search Functionality: Allow users to search for specific life hacks or filter them based on categories or voting. Admin Dashboard: A simple admin panel to moderate submissions and delete inappropriate content.
 
-netlify link:https://terriblelifehack.netlify.app/
+netlify link:https://frolicking-liger-3fa974.netlify.app/
