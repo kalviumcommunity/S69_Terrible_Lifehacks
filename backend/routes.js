@@ -4,18 +4,30 @@ const mongoose = require('mongoose');
 const Item = require('./models/Item');
 
 //POST
-router.post('/items',async(req,res)=>{
-    try{
-        const {name} = req.body;
-
-        const newItem = new Item({name});
-
-        await newItem.save();
-
-        res.status(201).json({message:'Item added successfully',newItem});
-    }catch(err){
-        res.status(400).json({message : err.message});
+router.post('/items', async (req, res) => {
+  const { username, password } = req.body;
+  try {
+    const user = await User.findOne({ username });
+    if (!user || !(await bcrypt.compare(password, user.password))) {
+      return res.status(401).json({ message: 'Invalid credentials' });
     }
+
+    // JWT Token
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+      expiresIn: '1d',
+    });
+
+    // Set token in HTTP-only cookie
+    res.cookie('token', token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      maxAge: 86400000, // 1 day
+    });
+
+    res.json({ message: 'Login successful' });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
 });
 
 
